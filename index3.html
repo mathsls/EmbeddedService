@@ -4,33 +4,6 @@
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en_US';
-
-			window.addEventListener("onEmbeddedMessagingReady", () => {
-				embeddedservice_bootstrap.prechatAPI.setVisiblePrechatFields({
-					"_firstName": {
-						"value": "Test",
-						"isEditableByEndUser": true
-					},
-					"_lastName": {
-						"value": "Testing",
-						"isEditableByEndUser": true
-					},
-					"_email": {
-						"value": "test.user@test.com",
-						"isEditableByEndUser": true
-					}
-				});
-
-				embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({
-					"UserID": "867-5309"
-				});
-			});
-
-			
-			window.addEventListener("onEmbeddedMessagingButtonCreated", () => {
-				embeddedservice_bootstrap.utilAPI.showChatButton();
-			});
-			
 			embeddedservice_bootstrap.init(
 				'00D60000000Jeku',
 				'Mednet_Agent_Deployment',
