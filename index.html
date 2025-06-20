@@ -1,27 +1,35 @@
 <body>
 <script type='text/javascript'>
+	// Example: Get user data from your website's login system or a profile object
+	const currentUser = {
+	    firstName: 'Dynamic',
+	    lastName: 'User',
+	    email: 'dynamic.user@example.com',
+	    userId: 'USER12345'
+	};
+
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en_US';
 
 			window.addEventListener("onEmbeddedMessagingReady", () => {
 				embeddedservice_bootstrap.prechatAPI.setVisiblePrechatFields({
-					"First_Name": {
-						"value": "Test",
-						"isEditableByEndUser": true
-					},
-					"Last_Name": {
-						"value": "Testing",
-						"isEditableByEndUser": true
-					},
-					"Email": {
-						"value": "test.user@test.com",
-						"isEditableByEndUser": true
-					}
+				    "First_Name": {
+				        "value": currentUser.firstName,
+				        "isEditableByEndUser": true
+				    },
+				    "Last_Name": {
+				        "value": currentUser.lastName,
+				        "isEditableByEndUser": true
+				    },
+				    "Email": {
+				        "value": currentUser.email,
+				        "isEditableByEndUser": true
+				    }
 				});
-
+				
 				embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({
-					"UserID": "867-5309"
+				    "UserID": currentUser.userId
 				});
 			});
 			
