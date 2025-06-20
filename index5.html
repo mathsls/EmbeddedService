@@ -1,0 +1,62 @@
+<html>
+<body>
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			console.log('1. initEmbeddedMessaging() function started.');
+
+			embeddedservice_bootstrap.settings.language = 'en_US';
+			console.log('2. Language set to en_US.');
+
+			window.addEventListener("onEmbeddedMessagingReady", () => {
+				console.log('3. "onEmbeddedMessagingReady" event fired!');
+
+				embeddedservice_bootstrap.prechatAPI.setVisiblePrechatFields({
+					"_firstName": {
+						"value": "Test",
+						"isEditableByEndUser": true
+					},
+					"_lastName": {
+						"value": "Testing",
+						"isEditableByEndUser": true
+					},
+					"_email": {
+						"value": "test.user@test.com",
+						"isEditableByEndUser": true
+					}
+				});
+				console.log('4. setVisiblePrechatFields called.');
+
+				embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({
+					"UserID": "867-5309"
+				});
+				console.log('5. setHiddenPrechatFields called.');
+			});
+
+			
+			window.addEventListener("onEmbeddedMessagingButtonCreated", () => {
+				console.log('6. "onEmbeddedMessagingButtonCreated" event fired!');
+				embeddedservice_bootstrap.utilAPI.showChatButton();
+				console.log('7. showChatButton() called.');
+			});
+			
+			console.log('8. Calling embeddedservice_bootstrap.init()...');
+			embeddedservice_bootstrap.init(
+				'00D60000000Jeku',
+				'Mednet_Agent_Deployment',
+				'https://mednet.my.site.com/ESWMednetAgentDeploymen1749088673821',
+				{
+					scrt2URL: 'https://mednet.my.salesforce-scrt.com'
+				}
+			);
+			console.log('9. embeddedservice_bootstrap.init() called. Waiting for events...');
+
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+			console.error('Full error object: ', err); // Log the full error object for more detail
+		}
+	};
+</script>
+<script type='text/javascript' src='https://mednet.my.site.com/ESWMednetAgentDeploymen1749088673821/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+</body>
+</html>
