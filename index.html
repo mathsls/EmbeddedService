@@ -4,32 +4,33 @@
 		try {
 			embeddedservice_bootstrap.settings.language = 'en_US';
 
-			window.addEventListener("onEmbeddedMessagingReady", () => {
-				console.log('opened');
+			const user = {
+				firstName: "Test",
+				lastName: "Testing",
+				email: "test.user@test.com",
+				userId: "867-5309"
+			}
+			
+			window.addEventListener("onEmbeddedMessagingReady", e => {
 				
 				embeddedservice_bootstrap.prechatAPI.setVisiblePrechatFields({
 					"First_Name": {
-						"value": "Test",
+						"value": user.firstName,
 						"isEditableByEndUser": true
 					},
 					"Last_Name": {
-						"value": "Testing",
+						"value": user.lastName,
 						"isEditableByEndUser": true
 					},
 					"Email": {
-						"value": "test.user@test.com",
+						"value": user.email,
 						"isEditableByEndUser": true
 					}
 				});
 
 				embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({
-					"UserID": "867-5309"
+					"UserID": user.userId
 				});
-			});
-			
-			window.addEventListener("onEmbeddedMessagingButtonCreated", () => {
-				console.log('onEmbeddedMessagingButtonCreated event fired - showing button.');
-				embeddedservice_bootstrap.utilAPI.showChatButton();
 			});
 
 			embeddedservice_bootstrap.init(
