@@ -1,38 +1,38 @@
 <body>
 <script type='text/javascript'>
+
+
+
+
+
+
+
+
 	function initEmbeddedMessaging() {
-		
 		try {
 			embeddedservice_bootstrap.settings.language = 'en_US';
 
 			window.addEventListener("onEmbeddedMessagingReady", () => {
-				const currentUser = {
-				    firstName: "Dynamic",
-				    lastName: "User",
-				    email: "dynamic.user@example.com",
-				    userId: "USER12345"
-				};
-				
 				embeddedservice_bootstrap.prechatAPI.setVisiblePrechatFields({
-				    "First_Name": {
-				        "value": "Dynamic",
-				        "isEditableByEndUser": true
-				    },
-				    "Last_Name": {
-				        "value": "User",
-				        "isEditableByEndUser": true
-				    },
-				    "Email": {
-				        "value": currentUser.email,
-				        "isEditableByEndUser": true
-				    }
+					"First_Name": {
+						"value": "Test",
+						"isEditableByEndUser": true
+					},
+					"Last_Name": {
+						"value": "Testing",
+						"isEditableByEndUser": true
+					},
+					"Email": {
+						"value": "test.user@test.com",
+						"isEditableByEndUser": true
+					}
 				});
-				
+
 				embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({
-				    "UserID": currentUser.userId
+					"UserID": "867-5309"
 				});
 			});
-			
+
 			embeddedservice_bootstrap.init(
 				'00D60000000Jeku',
 				'Mednet_Agent_Deployment',
