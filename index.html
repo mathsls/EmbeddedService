@@ -1,18 +1,17 @@
 <body>
 <script type='text/javascript'>
+	const user = {
+		firstName: "Test",
+		lastName: "Testing",
+		email: "test.user@test.com",
+		userId: "867-5309"
+	}
+	
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en_US';
-
-			const user = {
-				firstName: "Test",
-				lastName: "Testing",
-				email: "test.user@test.com",
-				userId: "867-5309"
-			}
 			
 			window.addEventListener("onEmbeddedMessagingReady", e => {
-				
 				embeddedservice_bootstrap.prechatAPI.setVisiblePrechatFields({
 					"_firstName": {
 						"value": user.firstName,
